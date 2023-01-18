@@ -11,7 +11,12 @@ $ ./Songify
 ```
 
 # Features
-
+- Song Addition
+- Song Removal
+- Album Addition
+- Album Removal
+- Template Implementation
+- Python Test Cases Implemented
 
 
 # Compilation
