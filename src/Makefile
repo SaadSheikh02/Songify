@@ -1,7 +1,7 @@
 objects = main.o View.o Controller.o Songify.o MediaFactory.o Criteria.o Album.o Song.o
 
-a4: $(objects)
-	g++ -o a4 $(objects)
+Songify: $(objects)
+	g++ -o Songify $(objects)
 
 main.o: main.cc
 	g++ -c main.cc 
@@ -29,4 +29,4 @@ Song.o: Song.cc Song.h
 	g++ -c Song.cc
 
 clean:
-	rm -f a4 *.o
+	rm -f Songify *.o
