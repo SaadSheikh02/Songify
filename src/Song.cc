@@ -1,7 +1,6 @@
 #include "Song.h"
 
-Song::Song(const string& art, const string& tit, const string& cat, const string& cont){
-
+Song::Song(const string& art, const string& tit, const string& cat, const string& cont):artist(art), title(tit), category(cat), content(cont){
 }
 
 bool Song::matches(const string& artist, const string& title)const{
@@ -14,13 +13,16 @@ bool Song::matches(const string& artist, const string& title)const{
 }
 
 void Song::print(ostream& p)const{
-    p << artist;
-    p << title;
+    p << "Artist: "<< artist << "\n";
+    p << "Title: " << title << "\n";
+    p << "Category "<< category<<endl;
 }
 
 void Song::play(ostream& p)const{
-    print(p);
-    p << content;
+    p << "Artist: "<< artist << "\n";
+    p << "Title: " << title << "\n";
+    p << "Category "<< category<<endl;
+    p << "Content: " << content << "\n";
 }
 
 //getters
@@ -37,8 +39,6 @@ const string& Song::getCategory()const{
 }
 
 ostream & operator << (ostream &out, const Song &s){
-    out << s.getArtist();
-    out << s.getTitle();
-    out << s.getCategory();
+    s.play(out);
     return out;
 }

@@ -79,8 +79,10 @@ void Controller::showAllAlbums(){
 
 void Controller::showSingleAlbum(){
     int choice = - 1;
+    cout << "ENTERED Songify::getAlbums()";
     view.albumMenu(av.getAlbums(), choice);
     Album* album;
+    cout << "ENTERED Songify::getAlbum()";
     av.getAlbum(choice, &album);
     view.printAlbum(album);
 }

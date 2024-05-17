@@ -8,9 +8,11 @@ using namespace std;
 
 class Song {
 		
+	friend ostream & operator << (ostream &out, const Song &s);
+	
 	public:
 		//constructors
-		Song(const string& artist, const string&  title, const string& category,const string& content);
+		Song(const string& artist = "sumfing", const string&  title = "title", const string& category = "cats",const string& content = "cont");
 
 		//getters
 		const string& getTitle() const;
@@ -21,6 +23,7 @@ class Song {
 
 		void print(ostream& p) const;
 		void play(ostream& p) const;
+
 	
 	private:
 		string title;

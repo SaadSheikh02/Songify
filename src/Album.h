@@ -3,23 +3,25 @@
 
 #include <iostream>
 #include <string>
-#include "SongArray.h"
+#include "Array.h"
+#include "Song.h"
 
 using namespace std;
 
 class Album {
-		
+	friend ostream& operator<<(ostream&, const Album& a);
 	public:
+
 		//constructors
 		Album(const string& artist, const string& albumTitle);
-		Album(const Album&);
 
 		//destructor
 		~Album();
 
+		Song* operator[](int index) const;
 		//getters
-		const string& getTitle(){return title;}
-		const string& getArtist(){return artist;}
+		const string& getTitle() const {return title;}
+		const string& getArtist() const {return artist;}
 
 		//comparison
 		bool matches(const string& artist, const string& albumTitle) const;
@@ -27,19 +29,20 @@ class Album {
 
 		//add and remove
 		bool addSong(Song*);
-		bool addSong(int, Song*);
 		bool getSong(const string& songTitle, Song**) const;
-		bool getSong(int, Song**) const;
+		bool getSong(int index, Song**) const;
 		bool removeSong(const string& songTitle, Song**);
 		bool removeSong(int, Song**);
 
-		void printShort() const;
-		void print() const;
+		void printShort(ostream& out) const;
+		void print(ostream& out) const;
 	
+		//getters
+		int getSize();
 	private:
-		string title;
 		string artist;
-		SongArray* songs;
+		string title;
+		Array<Song*> songs;
 	
 };
 #endif

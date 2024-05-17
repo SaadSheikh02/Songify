@@ -42,9 +42,24 @@ bool MediaFactory::createSong(const string& a, const string& t, Song** song){
 }
 
 bool MediaFactory::createAlbum(const string& title, const string& owner, Album** alb){
-   
+    *alb = new Album(owner, title);
+    return true;
 }
 
 bool MediaFactory::createCriteria(const string& artist, const string& category, Criteria** crit){
-    
+    if(artist.empty() && category.empty()){
+        return false;
+    }
+    else if (category.empty() && !artist.empty()){
+        *crit = new A_Criteria(artist);
+        return true;
+    }
+    else if(!category.empty() && artist.empty()){
+        *crit = new C_Criteria(category);
+        return true;
+    }
+    else{
+        *crit = new AorC_Criteria(artist, category);
+        return true;
+    }
 }
